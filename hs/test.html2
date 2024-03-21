@@ -1,0 +1,39 @@
+meta charset="utf-8"
+link rel="stylesheet" type="text/css" href="book.css"
+script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+script src="util.js"
+
+title
+初中物理公式
+
+book
+八年级
+
+chapter
+第一章：打开物理世界的大门
+
+idee 物理学
+（physics）
+
+chapter
+第二章：运动的世界
+
+idee 速度
+\[v=\frac s t\]
+
+\[a=\frac v t\]
+b 加速度
+
+chapter-
+第三章：没有counter
+
+chapter
+第四章：有counter
+
+table
+captain  表格
+.th h1 h2 h3
+.td d1 d2 d3
+
+book
+九年级
