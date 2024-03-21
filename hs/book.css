@@ -1,0 +1,49 @@
+.MathJax {
+  color: red;
+  margin: 0px ! important;
+  padding: 1ex;
+}
+html2 {
+  display: block;
+  background: silver;
+  font-size: 28px;
+  width: 100%;
+  border-top: 1px dashed;
+}
+
+title {
+}
+
+book {
+  display: block;
+  text-align: center;
+  background: green;
+  font-size: 36px;
+  counter-reset: chapter 0;
+}
+
+chapter, chapter- {
+  display: block;
+  text-align: center;
+  background: aqua;
+  font-size: 32px;
+}
+
+chapter::before {
+  counter-increment: chapter 2;
+  content: "胡乱counter" counter(chapter, trad-chinese-informal);
+}
+
+idee {
+  color: red;
+}
+
+table, tr, td, th {
+  border: 1px solid;
+}
+captain {
+  background: yellow;
+}
+captain::before {
+  content : '<br />';
+}
