@@ -12,18 +12,24 @@ html2 = ("<!DOCTYPE html>"++) . blocks . wordsBy null . fmap trimEnd . lines
 blocks (b0:bs) = concatMap firstBlockLine b0 ++  concatMap regularBlock bs
 firstBlockLine s = toOpentag s ++ toClosetag (keyOf s)
 regularBlock block@(l0:ls) =
-  if head l0 == '>' then let (p:c:_)=words (tail l0) in pc (withTag c) p ls
+  if head l0 == '>' then let (p:c:_)=words (tail l0) in withPC p c ls
   else if isTagname l0 then tag_contents l0 ls
   else tag_contents tag2 block
-pc transLine p cs = withTag p $ concatMap (transLine . regularBlockLine) cs
-tag_contents = pc id
+tag_contents p = pt p id
+withPC p c = pt p $ withTag c
+--pt: parent transform
+pt p t = mapReduce (withParent p) $ t . regularBlockLine
+mapReduce r m = r . fmap m
+withParent p = withTag p . concat
+withChildren c = mapReduce concat $ withTag c
+
 regularBlockLine line = let (key,content)=kcOf line in
   if head key == '*' then
-    concatMap (withTag $ tail key) $ words content
+    withChildren (tail key) $ words content
   else if head key == '.' then
-     withTag "script" $ obj2++key++"(\""++escapeJS content++"\")"
-  else if isTagname key
-  then withTag key $ trimStart content
+    withTag "script" $ obj2++key++"(\""++escapeJS content++"\")"
+  else if isTagname key then
+    withTag key $ trimStart content
   else line
 
 escapeJS = backslash "\"\\"
