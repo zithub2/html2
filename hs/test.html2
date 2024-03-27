@@ -30,10 +30,18 @@ chapter-
 chapter
 第四章：有counter
 
-table
-captain  表格
-.th h1 h2 h3
-.td d1 d2 d3
+> table tr
+*th h1 h2 h3
+*td d1 d2 d3
+*td d1 d2 d3
+
+> ol li
+3+(-7)
+-3+(-7)
+3-(-7)
+-3-(-7)
+-(3-7)
+-(-3-(-7))
 
 book
 九年级
